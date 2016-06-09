@@ -1,0 +1,59 @@
+.page-header {
+  background: #D54271;
+  padding: 0;
+}
+
+.page-title {
+  float: left;
+  padding: 0 0 .2em .5em;
+
+}
+
+
+.icon-menu3 {
+  font-size: 2.5em;
+  float: right;
+}
+
+.page-nav {
+  padding: 0.2em;
+}
+
+.page-nav ul {
+  display: none;
+  padding: 0;
+  list-style: none;
+  clear: both;
+}
+
+.page-nav:hover ul {
+  display: block;
+}
+
+.page-nav li{
+  font-size: 1.3em;
+  border-bottom: 1px solid black;
+  margin-right: .3em;
+  padding: .2em .1em;
+}
+
+@media only screen and (min-width: 640px) {
+
+  .icon-menu3 {
+    display: none;
+  }
+
+  .page-nav {
+    padding: .3em .3em .3em .3em;
+    text-align: center;
+  }
+
+  .page-nav ul {
+    display: block;
+  }
+
+  li.nav {
+    display: inline;
+    border: none;
+  }
+}
