@@ -1,6 +1,5 @@
 .page-header {
   background: #D54271;
-  padding: 0;
 }
 
 .page-title {
@@ -35,6 +34,10 @@
   border-bottom: 1px solid black;
   margin-right: .3em;
   padding: .2em .1em;
+}
+
+.displayed-text {
+  display: none;
 }
 
 @media only screen and (min-width: 640px) {
