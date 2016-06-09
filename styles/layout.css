@@ -1,0 +1,14 @@
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.page-title {
+  max-width: 85%;
+}
+
+#filters select {
+  width: 85%;
+  margin: .1em 5%;
+}
