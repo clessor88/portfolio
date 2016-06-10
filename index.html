@@ -8,6 +8,19 @@
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/layout.css">
   <link rel="stylesheet" href="styles/modules.css">
+
+  <script id="novel-template" type="text/x-handlebars-template">
+  <header>
+    <h1>{{title}}</h1>
+    <div class="">
+      By <address><a href="{{authorUrl}}">{{author}}</a></address>
+      {{publishDays}}
+    </div>
+  </header>
+  <section class="novel-body">{{summary}}</section>
+
+</script>
+
 </head>
 <body>
   <header class="page-header clearfix">
@@ -47,6 +60,7 @@
     &copy; 2016 Crystal Lessor
   </footer>
   <script src="vendor/scripts/jquery.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
   <script src="scripts/content.js" type="text/javascript"></script>
   <script src="scripts/app.js" type="text/javascript"></script>
 </body>

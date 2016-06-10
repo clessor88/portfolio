@@ -9,17 +9,13 @@ function Article (books) {
 }
 
 Article.prototype.toHtml = function(){
-  var $newBook = $('article.displayed-text').clone();
-  $newBook.find('a').html(this.author);
-  $newBook.find('h1').html(this.title);
-  $newBook.find('a').attr('href', this.authorUrl);
-  $newBook.find('time').attr('pubdate', this.datePublished);
-  $newBook.find('.text-body').html(this.summary);
-  $newBook.find('time[pubdate]').attr('title', this.datePublished);
-  $newBook.find('time').html('About ' + parseInt((new Date() - new Date(this.datePublished))/60/60/24/1000) + ' days ago');
+var source = $('#novel-template').html();
+var template = Handlebars.compile(source);
 
-  $newBook.removeAttr('class');
-  return $newBook;
+this.daysAgo = parseInt((new Date() - new Date(this.datePublished))/60/60/24/1000);
+this.publishDays = this.datePublished ? 'published ' + this.daysAgo + ' days ago' : '(draft)';
+
+  return template(this);
 };
 
 novelData.sort(function(a,b) {
