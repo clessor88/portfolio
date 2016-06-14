@@ -8,10 +8,10 @@ function Article (books) {
   this.summary = books.summary;
 }
 
+Article.all = [];
 Article.prototype.toHtml = function(){
 var source = $('#novel-template').html();
 var template = Handlebars.compile(source);
-
 this.daysAgo = parseInt((new Date() - new Date(this.datePublished))/60/60/24/1000);
 this.publishDays = this.datePublished ? 'published ' + this.daysAgo + ' days ago' : '(draft)';
 
@@ -29,3 +29,16 @@ novelData.forEach(function(ele) {
 novels.forEach(function(article) {
   $('#novels').append(article.toHtml());
 });
+
+Article.fetchAll = function() {
+  if (localStorage.novelSummaries) {
+    Article.loadAll(JSON.parse(localStorage.novelSummaries));
+  }
+  else {
+    $.getJSON('data/novelSummaries.json', function(summaryData){
+      Article.loadAll(summaryData);
+      localStorage.setItem('novelSummaries', JSON.stringify(summaryData));
+    });
+  }
+};
+Article.fetchAll();
