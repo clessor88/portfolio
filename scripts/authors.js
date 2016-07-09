@@ -1,13 +1,13 @@
-function Article (books) {
-  for (keys in books) {
+function Article (opts) {
+  for (keys in opts) {
     this[keys] = opts[keys];
   }
 }
 
 Article.all = [];
 
-Article.prototype.toHtml = function(authorTemplateId){
-  var template = Handlebars.compile($(authorTemplateId).text());
+Article.prototype.toHtml = function(scriptTemplateId){
+  var template = Handlebars.compile($(scriptTemplateId).text());
   this.daysAgo = parseInt((new Date() - new Date(this.datePublished))/60/60/24/1000);
   if(this.daysAgo < 1){
     this.publishDays = '(published today)';
@@ -17,6 +17,9 @@ Article.prototype.toHtml = function(authorTemplateId){
   this.body = marked(this.body);
   return template(this);
 };
+Article.all = [];
+
+
 
 // novelData.sort(function(a,b) {
 //   return (new Date(b.datePublished)) - (new Date(a.datePublished));
@@ -29,16 +32,24 @@ Article.prototype.toHtml = function(authorTemplateId){
 // novels.forEach(function(article) {
 //   $('#novels').append(article.toHtml());
 // });
+Article.loadAll = function(dataWePassIn) {
+  dataWePassIn.sort(function(a,b){
+    return (new Date(b.datePublished)) - (new Date(a.datePublished));
+  }).forEach(function(ele) {
+    Article.all.push(new Article(ele));
+  });
+};
 
-Article.fetchAll = function() {
+Article.fetchAll = function(e) {
   if (localStorage.novelSummaries) {
     Article.loadAll(JSON.parse(localStorage.novelSummaries));
-    Article.initNewAuthorPage();
+    authorView.renderIndexPage();
   }
   else {
-    $.getJSON('/data/novelSummaries.json', function(summaryData){
+    $.getJSON('data/novelSummaries.json', function(summaryData){
       Article.loadAll(summaryData);
       localStorage.setItem('novelSummaries', JSON.stringify(summaryData));
+      authorView.renderIndexPage();
     });
   }
 };
