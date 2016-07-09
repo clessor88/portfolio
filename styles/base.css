@@ -1,0 +1,27 @@
+body {
+  line-height: 1.7;
+  background-color: #CC8A9F;
+  color: #160007;
+  font-size: 100%;
+}
+
+article {
+  border: 1px solid black;
+}
+
+p {
+  font-size: 1em;
+}
+
+a, a:link, a:active {
+  text-decoration: none;
+  color: #350011;
+}
+
+a:visited {
+  color: #4E0019;
+}
+
+address {
+  display: inline-block;
+}

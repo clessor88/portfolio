@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="vendor/styles/normalize.css">
+    <link rel="stylesheet" href="styles/icons.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/modules.css">
+
+    <script id="novel-template" type="text/x-handlebars-template">
+      <header>
+        <article class="clearfix" data-author="{{aurthor}}">
+        <h1>{{title}}</h1>
+        <div class="">
+          By <address><a href="{{authorUrl}}">{{author}}</a></address>
+          {{publishDays}}
+        </div>
+      </header>
+      <section class="novel-body">{{{summary}}}</section>
+      <a href="#" class="read-on">Read on &rarr;</a>
+      </article>
+    </script>
+    <script id="author-filter-template" type="text/x-handlebars-template">
+      <option value="{{author}}">{{author}}</option>
+    </script>
+
+  </head>
+  <body>
+    <header class="page-header clearfix">
+      <section class="page-title">
+        <h1>
+          Crystal's
+        </h1>
+        <h2>
+          Portfolio
+        </h2>
+      </section>
+      <nav class="page-nav">
+        <div class="icon-menu3"></div>
+        <ul>
+          <li class="tab" data-content="novels"><a href="#" class="icon-pencil2">Books</a></li>
+          <li class="tab" data-content="projects"><a href="#" class="icon-envelop">Projects</a></li>
+          <li class="tab"><a href="http://twitter.com/lessorlessor88" target="_blank" class="icon-twitter">Twitter</a></li>
+          <li class="tab"><a href="https://www.facebook.com/crystal.lessor" target="_blank" class="icon-facebook2">Facebook</a></li>
+          <li class="tab"><a href="http://github.com/clessor88" target="_blank" class="icon-github">Github</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="novels" class="tab-content">
+        <div>
+          <ul id="filters">
+            <li>
+              <select id="author-filter">
+                <option value="">-- Filter by Authors --</option>
+              </select>
+            </li>
+          </ul>
+        </div>
+      </section>
+    <section id="projects" class="tab-content">
+      <header>
+        Welcome to my Portfolio!
+      </header>
+      <section>
+        <h2>Some of my favorite things to do are:</h2>
+        <ul>
+          <li>Read books</li>
+          <li>Travel</li>
+          <li>Sing</li>
+          <li>Hang out with family and friends!</li>
+        </ul>
+      </section>
+    </section>
+  </main>
+    <footer>
+      &copy; 2016 Crystal Lessor
+    </footer>
+    <script src="vendor/scripts/jquery.js"></script>
+    <script src="vendor/scripts/handlebars.js"></script>
+    <script src="vendor/scripts/marked.js"></script>
+
+    <script src="scripts/authors.js"></script>
+    <script src="scripts/authorView.js"></script>
+  </body>
+</html>
