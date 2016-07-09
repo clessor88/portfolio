@@ -7,13 +7,13 @@ function Article (books) {
 Article.all = [];
 
 Article.prototype.toHtml = function(authorTemplateId){
-var template = Handlebars.compile($(authorTemplateId).text());
-this.daysAgo = parseInt((new Date() - new Date(this.datePublished))/60/60/24/1000);
-if(this.daysAgo < 1){
-  this.publishDays = '(published today)';
-} else {
-  this.publishDays = this.datePublished ? 'published ' + this.daysAgo + ' days ago' : '(draft)';
-}
+  var template = Handlebars.compile($(authorTemplateId).text());
+  this.daysAgo = parseInt((new Date() - new Date(this.datePublished))/60/60/24/1000);
+  if(this.daysAgo < 1){
+    this.publishDays = '(published today)';
+  } else {
+    this.publishDays = this.datePublished ? 'published ' + this.daysAgo + ' days ago' : '(draft)';
+  }
   this.body = marked(this.body);
   return template(this);
 };
@@ -36,7 +36,7 @@ Article.fetchAll = function() {
     Article.initNewAuthorPage();
   }
   else {
-    $.getJSON('data/novelSummaries.json', function(summaryData){
+    $.getJSON('/data/novelSummaries.json', function(summaryData){
       Article.loadAll(summaryData);
       localStorage.setItem('novelSummaries', JSON.stringify(summaryData));
     });
